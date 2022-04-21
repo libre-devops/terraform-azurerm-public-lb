@@ -71,9 +71,8 @@ variable "pip_custom_dns_label" {
 }
 
 variable "availability_zone" {
-  default     = ""
-  description = "The availability zone for the VMs to be created to"
-  type        = string
+  description = "The availability zone for the LB and PIP to be created to"
+  type        = list(any)
 }
 
 variable "tags" {
