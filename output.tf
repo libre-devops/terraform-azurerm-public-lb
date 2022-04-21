@@ -35,7 +35,7 @@ output "pip_name" {
 }
 
 output "pip_ip_address" {
-  value       = azurerm_public_ip.pip.ip_address
+  value       = azurerm_public_ip.pip.*.ip_address
   description = "The address of the public ip"
 }
 

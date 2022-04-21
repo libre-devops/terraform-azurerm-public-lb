@@ -10,7 +10,6 @@ resource "azurerm_lb" "pub_lb" {
     content {
       name                 = var.lb_ip_configuration_name
       public_ip_address_id = frontend_ip_configuration.value.id
-      availability_zone    = var.availability_zone
     }
   }
 
