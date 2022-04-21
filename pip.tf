@@ -7,5 +7,5 @@ resource "azurerm_public_ip" "pip" {
   allocation_method   = "Static"
   domain_name_label   = coalesce(var.pip_custom_dns_label, var.lb_name)
   sku                 = var.pip_sku
-  availability_zone   = var.availability_zone
+  zones               = var.availability_zone
 }
