@@ -8,4 +8,5 @@ resource "azurerm_public_ip" "pip" {
   domain_name_label   = coalesce(var.pip_custom_dns_label, var.lb_name)
   sku                 = var.pip_sku
   zones               = var.availability_zone
+  tags                = var.tags
 }
