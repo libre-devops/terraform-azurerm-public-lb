@@ -13,7 +13,7 @@ variable "location" {
 }
 
 variable "lb_name" {
-  description = "The hostname of the vm"
+  description = "The name of the LB"
   type        = string
 }
 
@@ -34,18 +34,18 @@ variable "lb_bpool_name" {
 }
 
 variable "enable_outbound_rule" {
-  description = "Whether an outbound nat rule should be made"
+  description = "Whether an outbound rule should be made"
   type        = bool
 }
 
 variable "outbound_rule_name" {
-  description = "The name of the outbound nat rule"
+  description = "The name of the outbound rule"
   type        = string
 }
 
 variable "outbound_protocol" {
   type        = string
-  description = "The protocol for the outbound NAT rule"
+  description = "The protocol for the outbound rule"
 }
 
 variable "allocated_outbound_ports" {
@@ -55,7 +55,7 @@ variable "allocated_outbound_ports" {
 
 variable "pip_sku" {
   default     = null
-  description = "If you wish to assign a public IP directly to your nic, set this to Standard"
+  description = "If you wish to assign a public IP directly, set this to Standard"
   type        = string
 }
 
@@ -71,7 +71,7 @@ variable "pip_custom_dns_label" {
 }
 
 variable "availability_zone" {
-  description = "The availability zone for the LB and PIP to be created to"
+  description = "The availability zone for the PIP to be created to"
   type        = list(any)
 }
 
@@ -88,16 +88,4 @@ variable "allocation_method" {
   description = "Defines how an IP address is assigned. Options are Static or Dynamic."
   type        = string
   default     = "Dynamic"
-}
-
-variable "identity_type" {
-  description = "The Managed Service Identity Type of this Virtual Machine."
-  type        = string
-  default     = ""
-}
-
-variable "identity_ids" {
-  description = "Specifies a list of user managed identity ids to be assigned to the VM."
-  type        = list(string)
-  default     = []
 }

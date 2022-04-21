@@ -24,7 +24,7 @@ resource "azurerm_lb_backend_address_pool" "public_lb_bpool" {
 resource "azurerm_lb_outbound_rule" "outbound_rule" {
   count = var.enable_outbound_rule ? 1 : 0
 
-  name                = var.outbound_rule_name
+  name = var.outbound_rule_name
 
   backend_address_pool_id  = azurerm_lb_backend_address_pool.public_lb_bpool.id
   loadbalancer_id          = azurerm_lb.pub_lb.id
