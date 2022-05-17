@@ -1,6 +1,16 @@
 ```hcl
+module "rg" {
+  source = "registry.terraform.io/libre-devops/rg/azurerm"
+
+  rg_name  = "rg-${var.short}-${var.loc}-${terraform.workspace}-build" // rg-ldo-euw-dev-build
+  location = local.location                                            // compares var.loc with the var.regions var to match a long-hand name, in this case, "euw", so "westeurope"
+  tags     = local.tags
+
+  #  lock_level = "CanNotDelete" // Do not set this value to skip lock
+}
+
 module "public_lb" {
-  source = "github.com/libre-devops/terraform-azurerm-public-lb"
+  source = "registry.terraform.io/libre-devops/public-lb/azurerm"
 
   rg_name  = module.rg.rg_name
   location = module.rg.rg_location
@@ -19,7 +29,6 @@ module "public_lb" {
   outbound_protocol        = "Tcp"
   allocated_outbound_ports = 1024
 }
-
 ```
 
 For a full example build, check out the [Libre DevOps Website](https://www.libredevops.org/quickstart/utils/terraform/using-lbdo-tf-modules-example.html)
